@@ -1,0 +1,1 @@
+all(ans_of_contacted_before %in% ans_of_contacted_many_times)
