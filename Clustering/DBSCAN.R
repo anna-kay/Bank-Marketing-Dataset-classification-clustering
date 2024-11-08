@@ -3,17 +3,13 @@ rm(list=ls())
 bank<-read.csv("bank-additional-full.csv", sep=";")
 bank$y<-relevel(bank$y, "yes")
 
-#----------------------------------------------------------------------------#
-# Orismos train_sample kai test_sample
-#----------------------------------------------------------------------------#
+# Define train_sample & test_sample
 data<- bank
 
 set.seed(81)
 
 bank_sample = data[sample(nrow(data),3500),]
-#bank_sample = data
-
-bank_sample_× = bank_sample[ , -ncol(bank_sample)]
+bank_sample_Ã— = bank_sample[ , -ncol(bank_sample)]
 bank_sample_Y = bank_sample[ , col(bank_sample)]
 
 #library(caret)
@@ -31,7 +27,7 @@ bank_sample_Y = bank_sample[ , col(bank_sample)]
 #-----------------------------------------------------------------------------#
 library(dbscan)
 
-dissimilarity_matrix<-as.matrix(daisy(bank_sample_×, metric = "gower")) # enallaktika allo metric
+dissimilarity_matrix<-as.matrix(daisy(bank_sample_Ã—, metric = "gower")) # enallaktika allo metric
 
 # Optimize the parameter eps of the DBSCAN algorithm, knn distance
 knndist = kNNdist(dissimilarity_matrix, k = 20)
