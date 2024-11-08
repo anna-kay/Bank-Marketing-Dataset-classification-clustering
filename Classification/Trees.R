@@ -11,7 +11,7 @@ bank_sample = data
 library(caret)
 set.seed(81)
 
-# Dimiourgia partition (statified)
+# Create stratified partition
 inTrain <- createDataPartition(y=bank_sample$y, p=0.70, list=FALSE)
 
 bank_sample_train = bank_sample[inTrain, ]
